@@ -1,0 +1,3 @@
+have signed in = COUNTA( // count the number of rows that are not blank
+    admin_users[Days]
+    )
