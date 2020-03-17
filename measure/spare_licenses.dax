@@ -1,0 +1,2 @@
+Spare Licenses = // available minus active and pending active emails (use filter in report)
+COUNTA('Team Members'[email]) - SUM('BIM360_Service_Levels'[DocsAvailable])
