@@ -1,0 +1,4 @@
+signed in recently = CALCULATE(
+    COUNT(admin_users[Days]),
+    admin_users[Days] <= 7
+    ) 
