@@ -1,0 +1,3 @@
+never signed in = COUNTBLANK( // count the number of rows where 'table'[col] is blank
+    admin_users[Days]
+    )
