@@ -1,0 +1,6 @@
+Active Members = COUNTROWS( // count the number of rows that are 'Active' in table 'BIM360_Members' column [Status]
+    FILTER(
+        RELATEDTABLE(BIM360_Members),
+        BIM360_Members[Status]="Active"
+        )
+    )
