@@ -1,18 +1,14 @@
 Spare Licenses = // available - count of emails filtered for active OR pending (note active AND pending would be different)
 
-CALCULATE( // after expression filters can be defined
-    ( // start the expression
-        SUM( // only a single row in this table so could equally use min or max
-            'BIM360_Service_Levels'[DocsAvailable]
-            )
-    -
-        COUNT( // count team memebers emails
-            'Team Members'[email]
-            )
-    ) // end the expression 
-    , // a comma signifies that we now define the filters for the previous expression
-    BIM360_Members[Status]="Active" // each table[col] needs to be defined
-    || // or expressed as a double pipe
-    //, to filter by filter1 and filter2 we would have used a comma instead of double pipe
-    BIM360_Members[Status]="Pending" // additional filters need table[col] defined
-    ) // end the calculate function
+SUM( // only a single row in this table so could equally use min or max
+    'BIM360_Service_Levels'[DocsAvailable]
+    )
+
+-
+
+COUNTROWS( // count the number of rows that are 'Pending' or 'Active' in table 'BIM360_Members' column [Status]
+    FILTER(
+        RELATEDTABLE(BIM360_Members),
+        BIM360_Members[Status]="Pending" || BIM360_Members[Status]="Active"
+        )
+    )
